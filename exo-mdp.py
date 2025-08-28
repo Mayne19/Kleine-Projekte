@@ -1,9 +1,9 @@
 import random
 user_ask = print("""Que voulez vous faire ?"
-"1: Générer un mot de passe"
-"2: Quitter""")
+"1: Ein Passwort Generieren"
+"2: Beenden""")
 
-menu = "Combien de carractères souhaitez-vous pour votre mot de passe ? "
+menu = "Wie viele Zeichen möchten Sie für Ihr Passwort verwenden? "
 
 
 
