@@ -1,20 +1,45 @@
+# Dieses Programm ist ein einfacher Passwort-Generator. Der Benutzer hat zwei Möglichkeiten:
+# 1. Ein Passwort mit einer selbst gewählten Länge generieren
+# 2. Das Programm beenden
+# Das Passwort besteht aus Buchstaben, Zahlen und Sonderzeichen. Es muss mindestens 4 Zeichen lang sein.
+
+
 import random
-user_ask = print("""Que voulez vous faire ?"
-"1: Ein Passwort Generieren"
-"2: Beenden""")
+import string
 
-menu = "Wie viele Zeichen möchten Sie für Ihr Passwort verwenden? "
+# Menü anzeigen 
+print("""Was möchten Sie tun ?
+1: Ein Passwort generieren
+2: Beenden""")
 
+menu = "Wie viele Zeichen möchten Sie für Ihr Passwort ? "
 
-
+# Hauptschleife
 while True:
-    long_mdp = input(menu)
+    choice = input("Ihre Wahl (1 oder 2) : ")
 
-    while int(long_mdp) < 4:
-        long_mdp = input(menu)
-        mdp = random.randint(long_mdp)
-        if int(long_mdp) < 4:
-            print("Vous ne pouvez pas créer un mot de passe de moins de 4 caractères !") 
+    # Option 2: Programm beenden
+    if choice == "2":
+        print("Auf Wiedersehen !")
+        break
+
+    # Option 1: Passwort generieren
+    elif choice == "1":
+        lang_passwort = input(menu)
+        if not lang_passwort.isdigit() or int(lang_passwort) < 4:
+            print("Sie können kein Passwort mit weniger als 4 Zeichen erstellen !")
             continue
+        lang_passwort = int(lang_passwort)
 
-    print(f"Voici votre mot de passe de {long_mdp} caractères entre les crochets : [{mdp}].")
+        # Passwort-Zeichen: Buchstaben, Zahlen und Sonderzeichen
+        zeichen = string.ascii_letters + string.digits + string.punctuation
+
+        # Passwort erstellen
+        passwort = ''.join(random.choice(zeichen) for _ in range(lang_passwort))
+
+        # Passwort ausgeben
+        print(f"Hier ist Ihr Passwort mit {lang_passwort} Zeichen : [{passwort}]")
+
+        # Falsche Eingabe
+    else:
+        print("Ungültige Wahl, bitte versuchen Sie es erneut.")
